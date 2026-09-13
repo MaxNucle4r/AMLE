@@ -1,0 +1,27 @@
+# Visual Studio
+.vs/
+x64/
+Debug/
+Release/
+
+# Build files
+*.obj
+*.exe
+*.pdb
+*.ilk
+*.tlog
+*.log
+*.recipe
+*.sarif
+
+# User settings
+*.user
+
+# Generated data
+packages/
+
+# Generated models
+models/
+
+#Unnecessary files
+Reworked Systems Helper File.txt

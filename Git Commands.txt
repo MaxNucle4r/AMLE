@@ -1,0 +1,243 @@
+========================
+GIT INSTALL + CHECKLIST
+========================
+
+
+1) Check if Git is installed
+----------------------------
+
+git --version
+
+
+Expected output example:
+
+git version 2.xx.x
+
+
+If command is not recognized:
+Install Git from:
+https://git-scm.com/downloads
+Or:
+winget install --id Git.Git -e --source winget
+Or:
+winget install --id Git.Git
+Or:
+winget install Git.Git
+
+
+========================
+
+
+2) Configure Git identity
+-------------------------
+
+Set your name:
+
+git config --global user.name "Your Name"
+
+
+Set your email:
+
+git config --global user.email "your@email.com"
+
+
+Check configuration:
+
+git config --list
+
+
+========================
+
+
+3) Initialize a Git repository
+------------------------------
+
+Go into the project folder:
+
+cd "path/to/AMLE"
+
+
+Initialize Git:
+
+git init
+
+
+Check status:
+
+git status
+
+
+========================
+
+
+4) First commit
+---------------
+
+Add all files:
+
+git add .
+
+
+Create commit:
+
+git commit -m "Initial commit"
+
+
+========================
+
+
+5) Connect to GitHub repository
+-------------------------------
+
+Add remote:
+
+git remote add origin https://github.com/USERNAME/REPOSITORY.git
+
+
+Check remote:
+
+git remote -v
+
+
+Rename branch to main:
+
+git branch -M main
+
+
+Push:
+
+git push -u origin main
+
+
+========================
+
+
+6) Normal workflow after changes
+--------------------------------
+
+Check changed files:
+
+git status
+
+
+Add changes:
+
+git add .
+
+
+Commit:
+
+git commit -m "Describe changes here"
+
+
+Upload:
+
+git push
+
+
+========================
+
+
+7) Useful commands
+------------------
+
+See commit history:
+
+git log
+
+
+Short commit history:
+
+git log --oneline
+
+
+See differences:
+
+git diff
+
+
+See branches:
+
+git branch
+
+
+Create new branch:
+
+git branch branch_name
+
+
+Switch branch:
+
+git checkout branch_name
+
+
+Modern alternative:
+
+git switch branch_name
+
+
+========================
+
+
+8) Clone existing repository
+----------------------------
+
+git clone https://github.com/USERNAME/REPOSITORY.git
+
+
+========================
+
+
+9) Ignore files
+---------------
+
+Create a file called:
+
+.gitignore
+
+
+Example C++ ignores:
+
+.vs/
+x64/
+Debug/
+Release/
+*.obj
+*.exe
+*.pdb
+
+
+========================
+
+
+10) Emergency undo
+------------------
+
+Remove file from staging:
+
+git reset filename
+
+
+Undo last commit but keep changes:
+
+git reset --soft HEAD~1
+
+
+Discard local file changes:
+
+git checkout -- filename
+
+
+========================
+
+
+11) Check everything is OK
+--------------------------
+
+git status
+
+Should show:
+
+nothing to commit, working tree clean
+
+========================

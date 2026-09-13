@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="AMLE.vcxproj" Id="4caa9289-f96a-424c-bb03-4ecc83717aa2" />
+</Solution>
