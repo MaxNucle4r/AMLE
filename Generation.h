@@ -98,31 +98,4 @@ namespace GenerationHelpersToString
 
 
 
-namespace GenerationHelpers
-{
-
-	ModelType pickModelType(const ModelType& defaultModel,
-		const ParsedCommand& cmd);
-
-	std::optional<std::vector<std::string>> pickGenerationSeed(const ParsedCommand& cmd,
-		const Debug& debugger);
-
-	size_t pickModelTypeSize(const ParsedCommand& cmd, const size_t defaultSize);
-
-	void handleGenerationDebug(const Debug& debugger, const std::string& reply, 
-		const EndingType& endtype, VocabularyManager& vm);
-
-	
-
-}
-
-
-
-
-
-
-
-
-
-
 

@@ -7,7 +7,7 @@
 
 
 
-void Memory::add(const std::string& input,
+void AIMemory::add(const std::string& input,
     const std::string& output)
 {
     entries.push_back({ input, output });
@@ -15,20 +15,20 @@ void Memory::add(const std::string& input,
 
 
 
-const std::vector<MemoryEntry>& Memory::getAll() const
+const std::vector<MemoryEntry>& AIMemory::getAll() const
 {
     return entries;
 }
 
 
-std::vector<MemoryEntry>& Memory::getAll()
+std::vector<MemoryEntry>& AIMemory::getAll()
 {
     return entries;
 }
 
 
 
-std::vector<MemoryEntry> Memory::findByWord(const std::string& word) const
+std::vector<MemoryEntry> AIMemory::findByWord(const std::string& word) const
 {
     std::vector<MemoryEntry> found;
 
@@ -46,7 +46,7 @@ std::vector<MemoryEntry> Memory::findByWord(const std::string& word) const
 
 
 
-std::vector <MemoryEntry> Memory::findByMaxInputWords(size_t maxWords) const
+std::vector <MemoryEntry> AIMemory::findByMaxInputWords(size_t maxWords) const
 {
     std::vector<MemoryEntry> found;
 
@@ -71,20 +71,20 @@ std::vector <MemoryEntry> Memory::findByMaxInputWords(size_t maxWords) const
 
 
 
-void Memory::clear()
+void AIMemory::clear()
 {
     entries.clear();
 }
 
 
-size_t Memory::size() const
+size_t AIMemory::size() const
 {
     return entries.size();
 }
 
 
 
-std::vector<MemoryEntry> Memory::getRange(size_t from, size_t to) const
+std::vector<MemoryEntry> AIMemory::getRange(size_t from, size_t to) const
 {
     std::vector<MemoryEntry> range;
 
@@ -98,7 +98,7 @@ std::vector<MemoryEntry> Memory::getRange(size_t from, size_t to) const
 }
 
 
-std::vector<MemoryEntry> Memory::getFirst(size_t amount) const
+std::vector<MemoryEntry> AIMemory::getFirst(size_t amount) const
 {
     std::vector<MemoryEntry> range;
 
@@ -111,7 +111,7 @@ std::vector<MemoryEntry> Memory::getFirst(size_t amount) const
 }
 
 
-std::vector<MemoryEntry> Memory::getLast(size_t amount) const
+std::vector<MemoryEntry> AIMemory::getLast(size_t amount) const
 {
     std::vector<MemoryEntry> range;
 
@@ -127,7 +127,7 @@ std::vector<MemoryEntry> Memory::getLast(size_t amount) const
 
 
 
-void Memory::append(const Memory& other)
+void AIMemory::append(const AIMemory& other)
 {
     // TO DO
     // make a workaround for cases like memory += memory
@@ -143,7 +143,7 @@ void Memory::append(const Memory& other)
 
 
 
-Memory& Memory::operator+= (const Memory& other)
+AIMemory& AIMemory::operator+= (const AIMemory& other)
 {
     append(other);
 

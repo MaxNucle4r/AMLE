@@ -36,7 +36,7 @@ private:
 	VocabularyManager vocabulary;
 
 
-	Memory memory;
+	AIMemory memory;
 
 
 	Debug debugger;
@@ -148,13 +148,13 @@ public:
 
 
 
-	Memory& getMemory()
+	AIMemory& getMemory()
 	{
 		return memory;
 	}
 
 
-	const Memory& getMemory() const
+	const AIMemory& getMemory() const
 	{
 		return memory;
 	}

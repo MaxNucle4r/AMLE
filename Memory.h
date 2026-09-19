@@ -14,7 +14,7 @@ struct MemoryEntry
 
 
 
-class Memory
+class AIMemory
 {
 
 private:
@@ -47,7 +47,7 @@ public:
 
 
 
-    void append(const Memory& other);
+    void append(const AIMemory& other);
 
 
 
@@ -58,5 +58,5 @@ public:
 
 
 
-    Memory& operator+= (const Memory& other);
+    AIMemory& operator+= (const AIMemory& other);
 };

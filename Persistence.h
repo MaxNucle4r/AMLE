@@ -74,11 +74,11 @@ namespace Persistence
 	namespace MemorySL
 	{
 		void saveMemory(json& j,
-			const Memory& memory);
+			const AIMemory& memory);
 
 
 		void loadMemory(const json& j,
-			Memory& memory);
+			AIMemory& memory);
 	}
 
 
