@@ -21,6 +21,15 @@ std::unordered_map<std::string, WordStats>& VocabularyManager::getAll()
 
 
 
+void VocabularyManager::clear()
+{
+    vocab.clear();
+}
+
+
+
+
+
 void VocabularyManager::addInputWord(const std::string& word)
 {
     WordStats& stats = vocab[word];

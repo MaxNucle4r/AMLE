@@ -17,6 +17,7 @@
 #include "CommandTraining.h"
 #include "CommandPrint.h"
 #include "CommandVersion.h"
+#include "CommandClear.h"
 
 
 
@@ -43,7 +44,7 @@ namespace Execute
 				break;
 			}
 
-			case Command::Clear:
+			case Command::Cls:
 			{
 				system("cls");
 
@@ -69,9 +70,11 @@ namespace Execute
 						Execute::Model::Load(ctx, cmd);
 						break;
 
+
 					case Target::Save:
 						Execute::Model::Save(ctx, cmd);
 						break;
+
 
 					case Target::Files:
 					{
@@ -79,6 +82,7 @@ namespace Execute
 						Persistence::Files::printAllFilesName(files);
 						break;
 					}
+
 
 					default:
 						throw std::logic_error("Invalid 'model' target.");
@@ -130,17 +134,20 @@ namespace Execute
 						break;
 					}
 
+
 					case Target::Memory:
 					{
 						Execute::Print::Memory(cmd, ctx.getMemory());
 						break;
 					}
 
+
 					case Target::Vocab:
 					{
 						Execute::Print::Vocabulary(ctx.getVocabulary());
 						break;
 					}
+
 
 					default:
 						throw std::logic_error("Invalid 'print' target.");
@@ -154,6 +161,7 @@ namespace Execute
 			case Command::Config:
 			{
 				Execute::Config::Apply(ctx, cmd);
+
 				break;
 
 
@@ -163,7 +171,7 @@ namespace Execute
 
 			case Command::Debug:
 			{
-				Execute::Debug::Apply(ctx, cmd);
+				Execute::Debugger::Apply(ctx, cmd);
 
 				break;
 			}
@@ -191,7 +199,24 @@ namespace Execute
 
 
 				}
+
+				break;
+
 			}
+
+
+
+			case Command::Clear:
+			{
+				Execute::Clear::cleaner(cmd, ctx);
+				break;
+			}
+				
+
+
+			default:
+				AMLE_ASSERT(false);
+				throw std::runtime_error("Invalid Command");
 
 
 		}

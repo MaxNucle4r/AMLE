@@ -14,7 +14,7 @@ enum class Command
 {
     //special commands
     Help,
-    Clear,
+    Cls,
     Version,
 
 
@@ -24,6 +24,7 @@ enum class Command
     Model,
     Config,
     Debug,
+    Clear,
 
     None
 };
@@ -39,6 +40,7 @@ static const std::unordered_map<std::string_view, Command> commands =
     {"train", Command::Train},
     {"model", Command::Model},
     {"config", Command::Config},
+    {"clear", Command::Clear},
 
     // for @[command]{ [options] } commands types
     {"debug", Command::Debug }
@@ -48,7 +50,7 @@ static const std::unordered_map<std::string_view, Command> commands =
 static const std::unordered_map<std::string_view, Command> specialCommands =
 {
     {"help", Command::Help},
-    {"cls", Command::Clear},
+    {"cls", Command::Cls},
     {"version", Command::Version}
 };
 
@@ -69,7 +71,7 @@ enum class Target
     Files,
     Input,
 
-    //self train for alter
+    //self train for later
     Self,
 
     //for @config

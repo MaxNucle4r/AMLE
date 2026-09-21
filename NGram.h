@@ -73,6 +73,9 @@ public:
 	size_t getContextSize() const;
 
 
+	void clear();
+
+
 
 	TextTypes::NgramTransitionMap& getTextTransitions();
 	const TextTypes::NgramTransitionMap& getTextTransitions() const;

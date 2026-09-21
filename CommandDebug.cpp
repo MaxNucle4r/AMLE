@@ -43,7 +43,7 @@ static void debugModifier(AIContext& ctx, const ParsedCommand& cmd)
 
 }
 
-namespace Execute::Debug
+namespace Execute::Debugger
 {
 	void Apply(AIContext& ctx, const ParsedCommand& cmd)
 	{

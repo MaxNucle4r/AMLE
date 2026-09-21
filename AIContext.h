@@ -208,6 +208,31 @@ public:
 
 
 
+	void clearMemory();
+	void clearTrainingInputs();
+
+	void clearVocabulary();
+
+	void clearDebugger();
+
+
+	void clearLegacyTextTransitions();
+	void clearLegacyTextProbs();
+
+	void clearLegacyCharTransitions();
+	void clearLegacyCharProbs();
+
+
+	void clearAllNGrams();
+	void clearNGram(size_t size);
+
+
+	void clearModel();
+
+
+
+
+
 	AIContext& operator+= (const AIContext& other);
 
 	AIContext& operator= (const AIContext& other);

@@ -291,5 +291,45 @@ namespace OptionParser
 	}
 
 
+	size_t getSizeOption(const ParsedCommand& cmd,
+		std::string_view name)
+	{
+
+		auto it = cmd.options.find(std::string(name));
+
+
+		if (it == cmd.options.end())
+		{
+			throw std::runtime_error("Option not found");
+
+		}
+
+
+
+		int value;
+
+		try
+		{
+			value = std::stoi(it->second);
+		}
+		catch (...)
+		{
+			throw std::invalid_argument("Invalid Option");
+		}
+
+
+		if (value < 0)
+		{
+			throw std::invalid_argument("Size must be greater than 0");
+		}
+
+
+
+		return static_cast<size_t>(value);
+
+
+	}
+
+
 } 
 

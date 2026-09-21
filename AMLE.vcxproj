@@ -143,6 +143,7 @@
     <ClCompile Include="AMLE Loop.cpp" />
     <ClCompile Include="AMLE.cpp" />
     <ClCompile Include="Command Executor.cpp" />
+    <ClCompile Include="CommandClear.cpp" />
     <ClCompile Include="CommandConfig.cpp" />
     <ClCompile Include="CommandDebug.cpp" />
     <ClCompile Include="CommandGeneration.cpp" />
@@ -179,6 +180,8 @@
     <ClInclude Include="AMLE_ASSERT.h" />
     <ClInclude Include="Color Text.h" />
     <ClInclude Include="Command Executor.h" />
+    <ClInclude Include="CommandClear.h" />
+    <ClInclude Include="CommandClearTemplates.h" />
     <ClInclude Include="CommandConfig.h" />
     <ClInclude Include="CommandDebug.h" />
     <ClInclude Include="CommandGeneration.h" />

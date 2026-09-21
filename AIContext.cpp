@@ -146,3 +146,90 @@ AIContext& AIContext::operator+= (const AIContext& other)
 
 }
 
+
+
+
+
+void AIContext::clearMemory()
+{
+    memory.clear();
+
+}
+
+void AIContext::clearTrainingInputs()
+{
+    trainingInputs.clear();
+}
+
+
+
+void AIContext::clearVocabulary()
+{
+    vocabulary.clear();
+}
+
+
+
+void AIContext::clearDebugger()
+{
+    debugger.disableAll();
+}
+
+
+
+void AIContext::clearLegacyTextTransitions()
+{
+    TextTransitions.clear();
+}
+
+void AIContext::clearLegacyTextProbs()
+{
+    TextProbs.clear();
+}
+
+void AIContext::clearLegacyCharTransitions()
+{
+    AIContext::CharTransitions.clear();
+}
+
+void AIContext::clearLegacyCharProbs()
+{
+    CharProbs.clear();
+}
+
+
+void AIContext::clearAllNGrams()
+{
+    NGrams.clear();
+}
+
+void AIContext::clearNGram(size_t size)
+{
+    if (!(size < NgramModel::MAX_CONTEXT_SIZE &&
+        size > NgramModel::MIN_CONTEXT_SIZE))
+    {
+        throw std::invalid_argument("Invalid Option For Size");
+    }
+
+    NGrams.at(size).clear();
+}
+
+
+
+void AIContext::clearModel()
+{
+   
+    clearLegacyTextTransitions();
+    clearLegacyTextProbs();
+
+    clearLegacyCharTransitions();
+    clearLegacyCharProbs();
+
+    clearAllNGrams();
+
+    clearMemory();
+    clearTrainingInputs();
+    clearVocabulary();
+
+}
+

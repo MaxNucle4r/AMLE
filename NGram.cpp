@@ -58,6 +58,16 @@ size_t NgramModel::getContextSize() const
 }
 
 
+void NgramModel::clear()
+{
+    textTransitions.clear();
+    textProbabilities.clear();
+
+    charTransitions.clear();
+    charProbabilities.clear();
+}
+
+
 
 TextTypes::NgramTransitionMap& NgramModel::getTextTransitions()
 {
