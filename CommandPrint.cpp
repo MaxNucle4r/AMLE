@@ -2,6 +2,7 @@
 #include "Option Parser.h"
 #include "ModelTypeConversion.h"
 #include "ValidationTemplatesh.h"
+#include "UI.h"
 
 
 
@@ -60,52 +61,44 @@ namespace Execute::Print
 
 
 
-
-
-	// TO DO
-	// rework this to make it cleaner
+	
 	// it can accept both -10 and 10 as values
-	// 10 = first 10
-	// -10 = last 10
+	// 10 = last 10
+	// -10 = first 10
 	void Memory(const ParsedCommand& cmd, const AIMemory& memory)
 	{
 		int size = 0;
 
-		if (auto size_it = cmd.options.find("size");
-			size_it != cmd.options.end())
+		if (cmd.options.contains("size"))
 		{
-			size = std::stoi(size_it->second);
-
-			if (size == 0)
-				throw std::out_of_range("Size must be a valid non zero number");
-
+			size = OptionParser::getIntOption(cmd, "size");
 		}
-
-
-		size_t amount = static_cast<size_t>(std::abs(size));
-		size_t absSize = static_cast<size_t>(std::abs(size));
-
-		if (absSize > memory.size())
-		{
-			std::cout << "Range out of bounds \n";
-		}
-
-
-		amount = std::min(amount, memory.size());
-
-		if (amount != absSize)
-			std::cout << " 'Size' has been set to: " << amount << "\n";
-
-
-
-		if (size < 0)
-			UI::Memory::printMemory(memory.getLast(amount));
-
-		else if (size > 0)
-			UI::Memory::printMemory(memory.getFirst(amount));
 
 		else
+		{
 			UI::Memory::printMemory(memory.getAll());
+
+			return;
+		}
+
+
+
+		size_t requested = static_cast<size_t>(std::abs(size));
+		
+
+		size_t amount = Validation::clampWithWarning("Size", requested, 
+			static_cast<size_t>(0), memory.size());
+
+
+
+		if (size > 0)
+			UI::Memory::printMemory(memory.getLast(amount));
+
+		else if (size < 0)
+			UI::Memory::printMemory(memory.getFirst(amount));
+
+		else if (size == 0)
+			throw std::invalid_argument("Size cannot be 0");
 
 
 	}

@@ -156,7 +156,29 @@ namespace OptionParser
 	}
 
 
+	// assumes it always exists
+	// always used after .contains()
+	int getIntOption(const ParsedCommand& cmd,
+		std::string_view name)
+	{
+		auto it = cmd.options.find(std::string(name));
 
+
+
+		try
+		{
+			return std::stoi(it->second);
+		}
+		catch (...)
+		{
+			throw std::invalid_argument("Invalid Option");
+		}
+
+
+	}
+
+
+	
 
 
 	std::string getLowerCaseStringOption(const ParsedCommand& cmd,

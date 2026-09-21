@@ -25,6 +25,10 @@ namespace OptionParser
 		int defaultValue);
 
 
+	int getIntOption(const ParsedCommand& cmd,
+		std::string_view name);
+
+
 	size_t getSizeOption(const ParsedCommand& cmd,
 		std::string_view name,
 		size_t defaultValue);

@@ -75,6 +75,9 @@ namespace Train
 		else
 		{
 			entries.emplace_back(original, normalized);
+
+			context.getMemory().add(original, "");
+
 		}
 
 

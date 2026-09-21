@@ -86,6 +86,13 @@ size_t AIMemory::size() const
 
 std::vector<MemoryEntry> AIMemory::getRange(size_t from, size_t to) const
 {
+    if (from > to)
+        throw std::out_of_range("Invalid Range");
+
+    if(to > entries.size())
+        throw std::out_of_range("Requested amount exceeds memory size");
+
+
     std::vector<MemoryEntry> range;
 
     for (size_t i = from; i < to; ++i)
@@ -100,6 +107,10 @@ std::vector<MemoryEntry> AIMemory::getRange(size_t from, size_t to) const
 
 std::vector<MemoryEntry> AIMemory::getFirst(size_t amount) const
 {
+    if (amount > entries.size())
+        throw std::out_of_range("Requested amount exceeds memory size");
+
+
     std::vector<MemoryEntry> range;
 
     for (size_t i = 0; i < amount; ++i)
@@ -113,6 +124,10 @@ std::vector<MemoryEntry> AIMemory::getFirst(size_t amount) const
 
 std::vector<MemoryEntry> AIMemory::getLast(size_t amount) const
 {
+    if (amount > entries.size())
+        throw std::out_of_range("Requested amount exceeds memory size");
+
+
     std::vector<MemoryEntry> range;
 
     size_t start = entries.size() - amount;
