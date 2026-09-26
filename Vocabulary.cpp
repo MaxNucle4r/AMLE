@@ -21,6 +21,13 @@ std::unordered_map<std::string, WordStats>& VocabularyManager::getAll()
 
 
 
+bool VocabularyManager::isEmpty() const 
+{
+    return vocab.empty();
+}
+
+
+
 void VocabularyManager::clear()
 {
     vocab.clear();

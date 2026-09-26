@@ -83,6 +83,12 @@ size_t AIMemory::size() const
 }
 
 
+bool AIMemory::isEmpty() const
+{
+    return entries.empty();
+}
+
+
 
 std::vector<MemoryEntry> AIMemory::getRange(size_t from, size_t to) const
 {

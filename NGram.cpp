@@ -69,6 +69,16 @@ void NgramModel::clear()
 
 
 
+bool NgramModel::isEmpty() const
+{
+    return textTransitions.empty() &&
+        charTransitions.empty() &&
+        textProbabilities.empty() &&
+        charProbabilities.empty();
+}
+
+
+
 TextTypes::NgramTransitionMap& NgramModel::getTextTransitions()
 {
 	return textTransitions;

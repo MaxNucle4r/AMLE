@@ -56,13 +56,13 @@ namespace Execute::Debugger
 		switch (cmd.target)
 		{
 
-		case Target::DebugFlags:
-			debugModifier(ctx, cmd);
-			break;
+			case Target::DebugFlags:
+				debugModifier(ctx, cmd);
+				break;
 
 
-		default:
-			throw std::invalid_argument("Invalid target for @config>\n");
+			default:
+				throw std::invalid_argument("Invalid target for @config>\n");
 		}
 
 

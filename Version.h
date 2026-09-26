@@ -12,7 +12,7 @@ namespace Version
     inline constexpr int PATCH = 2;
 
     inline constexpr int SaveFormat = 2;
-    inline constexpr std::string_view AMLE = "0.2.2";
+    inline constexpr std::string_view AMLE = "0.2.3";
     inline constexpr std::string_view ModelsDirectory = "models";
 
 

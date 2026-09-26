@@ -77,6 +77,10 @@ public:
 
 
 
+	bool isEmpty() const;
+
+
+
 	TextTypes::NgramTransitionMap& getTextTransitions();
 	const TextTypes::NgramTransitionMap& getTextTransitions() const;
 

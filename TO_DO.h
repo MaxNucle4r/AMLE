@@ -14,10 +14,6 @@
 
 
 POLISH:
-	***!!!*** Make ASAP a @clear command
-		it will clear transitions/probs
-		syntax: @clear>[transitions/probs]{[model]/[ngram-size]}
-				leaving @clear[transitions/probs]{} will clear everything
 
 	Make the UI more user friendly
 	Add the @help commandand to show all commands and their syntax
@@ -56,11 +52,13 @@ OPTIMIZATION:
 
 
 				P-2. memory
-					std::vector<TrainingInput> trainingInputs; does not need to be stored in memory
-						it is stored just within the same training session
-							maybe even cap those to at most 10-20 inputs
+					std::vector<TrainingInput> trainingInputs; does not need to be stored
+						Reduce runtime memory usage by limiting or disabling
+						retention of session-only TrainingInput entries.
 
-					Memory memory; is also not being filled.
+					@config>optimize{profile=memory/training-inputs-size=[<20]} if they really want to have that.
+					
+					AIMemory memory; is also not being filled.
 
 
 
@@ -85,6 +83,26 @@ OPTIMIZATION:
 
 
 GENERAL:
+
+
+	!!! MUST HAVE !!! 
+		Add @check(can work with options)
+			Syntax: @check{ [option] } would only display the "check" for that option
+				be id {model=ngram} or whatever else
+			- Show subsystem existence
+			- Show memory address
+			- Show empty/non-empty state
+			- Show subsystem-specific statistics
+			- Memory statistics
+			- Vocabulary statistics
+			- Training-input statistics
+			- Legacy transition/probability statistics
+			- NGram statistics per size
+			- Transition occurrence/frequency statistics
+			- Debugger flag states
+
+
+
 	Add more debugflags
 		Trace:
 			things like:
@@ -261,11 +279,14 @@ FOR FUTURE:
 			use a bitmask for the models to trian
 
 			Syntax Ideea:
+			*DONE*
+			{
 				@input>train{model = ngram} trains all available ngrams
 
 				@input>train / @input>train {} trains everything
 
 				@input>train{model = ngram/ size = 5} trains ngrams with size <=5
+			}
 
 				@input>train {size = 5} trains legacy + ngrams with size<=5
 

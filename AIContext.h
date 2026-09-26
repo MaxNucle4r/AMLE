@@ -229,6 +229,10 @@ public:
 
 	void clearModel();
 
+	bool isLegacyEmpty() const;
+	bool areNgramsEmpty() const;
+	bool isEmpty() const;
+
 
 
 

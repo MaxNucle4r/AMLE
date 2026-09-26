@@ -189,6 +189,7 @@
     <ClInclude Include="CommandPrint.h" />
     <ClInclude Include="Commands.h" />
     <ClInclude Include="CommandTraining.h" />
+    <ClInclude Include="CommandUtils.h" />
     <ClInclude Include="CommandVersion.h" />
     <ClInclude Include="Configuration.h" />
     <ClInclude Include="Debug.h" />

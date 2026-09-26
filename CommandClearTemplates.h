@@ -4,7 +4,7 @@
 
 
 
-namespace Execute::Clear::Model
+namespace Execute::Clear
 {
 	template<typename Map>
 	void clearMap(Map& map)

@@ -57,6 +57,9 @@ public:
     size_t size() const;
 
 
+    bool isEmpty() const;
+
+
 
     AIMemory& operator+= (const AIMemory& other);
 };

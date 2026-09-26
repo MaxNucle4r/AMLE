@@ -76,6 +76,8 @@ public:
 
     void clear();
 
+    bool isEmpty() const;
+
 
 
 

@@ -41,5 +41,13 @@ namespace Validation
         return current;
     }
 
+
+
+    template<typename Object>
+    bool isEmpty(const Object& obj)
+    {
+        return obj.isEmpty();
+    }
+
 	
 }

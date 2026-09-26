@@ -233,3 +233,29 @@ void AIContext::clearModel()
 
 }
 
+
+
+bool AIContext::isLegacyEmpty() const
+{
+    return TextTransitions.empty() &&
+        CharTransitions.empty() &&
+        TextProbs.empty() &&
+        CharProbs.empty();
+
+}
+
+bool AIContext::areNgramsEmpty() const
+{
+    for (const auto& [size, model] : NGrams)
+        if (!model.isEmpty())
+            return false;   
+    
+    return true;
+
+}
+
+bool AIContext::isEmpty() const
+{
+    return isLegacyEmpty() && areNgramsEmpty();
+}
+

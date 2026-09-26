@@ -19,14 +19,18 @@ namespace Execute::Clear
 	void cleaner(const ParsedCommand& cmd, AIContext& ctx);
 
 
+	template<typename Map>
+	void clearMap(Map& map);
+
+	// TO DO
+	std::string buildCleanerWarning(const ParsedCommand& cmd);
+	bool checkCleaner(const ParsedCommand& cmd);
+
+
 
 	namespace Model
 	{
 		void clearModel(AIContext& ctx);
-		
-
-		template<typename Map>
-		void clearMap(Map& map);
 
 	}
 
@@ -49,10 +53,12 @@ namespace Execute::Clear
 
 
 	//::Debug* test = nullptr;
+	/*
 	namespace Debugger
 	{
 		void clearDebugger(::Debug& debugger);
 	}
+	*/
 
 }
 
