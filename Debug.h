@@ -3,6 +3,8 @@
 #include <string_view>
 #include <unordered_map>
 
+#include "Components.h"
+
 
 
 
@@ -44,7 +46,24 @@ using DebugMask = uint32_t;
 
 class Debug
 {
+
+private:
+
+    const ComponentID component = ComponentID::DEBUGGER;
+
+    DebugMask mask = 0;
+
+
+
 public:
+
+    const ComponentID getID()
+    {
+        return component;
+    }
+
+
+
     void enable(DebugFlags flag);
 
     void disable(DebugFlags flag);
@@ -57,8 +76,7 @@ public:
 
 
 
-private:
-    DebugMask mask = 0;
+
 };
 
 

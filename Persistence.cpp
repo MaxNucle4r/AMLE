@@ -65,24 +65,24 @@ void Persistence::saveMetadata(json& j, const AIContext& context)
 
 
 	legacyStats["text"]["contexts"] =
-		context.getTextTransitions().size();
+		context.getLegacyModel().getTextTransitions().size();
 
 	legacyStats["text"]["transitions"] =
-		countTransitions(context.getTextTransitions());
+		countTransitions(context.getLegacyModel().getTextTransitions());
 
 	legacyStats["text"]["transitionOccurrences"] =
-		countTransitionOccurrences(context.getTextTransitions());
+		countTransitionOccurrences(context.getLegacyModel().getTextTransitions());
 
 
 
 	legacyStats["char"]["contexts"] =
-		context.getCharTransitions().size();
+		context.getLegacyModel().getCharTransitions().size();
 
 	legacyStats["char"]["transitions"] =
-		countTransitions(context.getCharTransitions());
+		countTransitions(context.getLegacyModel().getCharTransitions());
 
 	legacyStats["char"]["transitionOccurrences"] =
-		countTransitionOccurrences(context.getCharTransitions());
+		countTransitionOccurrences(context.getLegacyModel().getCharTransitions());
 
 
 
@@ -281,8 +281,8 @@ void Persistence::save(const AIContext& ctx, const std::string& filename)
 
 	Model::Legacy::saveLegacy(
 		j["legacy"],
-		ctx.getTextTransitions(),
-		ctx.getCharTransitions()
+		ctx.getLegacyModel().getTextTransitions(),
+		ctx.getLegacyModel().getCharTransitions()
 	);
 
 
@@ -351,11 +351,11 @@ void Persistence::save(const AIContext& ctx, const std::string& filename)
 void Persistence::rebuildModels(AIContext& context)
 {
 	 
-	context.getCharProbs() =
-		::Model::Char::makeProbabilities(context.getCharTransitions());
+	context.getLegacyModel().getCharProbs() =
+		::Model::Char::makeProbabilities(context.getLegacyModel().getCharTransitions());
 
-	context.getTextProbs() =
-		::Model::Text::makeProbabilities(context.getTextTransitions());
+	context.getLegacyModel().getTextProbs() =
+		::Model::Text::makeProbabilities(context.getLegacyModel().getTextTransitions());
 
 
 	for (auto& [size, model] : context.getAllNGrams())
@@ -385,8 +385,8 @@ void Persistence::load(AIContext& ctx, const std::string& filename)
 
 	Model::Legacy::loadLegacy(
 		j["legacy"],
-		ctx.getTextTransitions(),
-		ctx.getCharTransitions()
+		ctx.getLegacyModel().getTextTransitions(),
+		ctx.getLegacyModel().getCharTransitions()
 	);
 
 	Model::NGram::loadAllNgrams(

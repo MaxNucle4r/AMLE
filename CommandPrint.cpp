@@ -232,24 +232,25 @@ static void handleLegacyModelPrinting(const ParsedCommand& cmd, const AIContext&
 {
 	PrintOptions options = getPrintOptions(cmd);
 
-
+	auto& LegacyModel = ctx.getLegacyModel();
 
 	if (cmd.target == Target::Transitions)
 	{
+
 		if (options.text)
-			Execute::Print::TextTransitions(ctx.getTextTransitions());
+			Execute::Print::TextTransitions(LegacyModel.getTextTransitions());
 
 		if (options.character)
-			Execute::Print::CharTransitions(ctx.getCharTransitions());
+			Execute::Print::CharTransitions(LegacyModel.getCharTransitions());
 	}
 
 	else if (cmd.target == Target::Probs)
 	{
 		if (options.text)
-			Execute::Print::TextProbabilities(ctx.getTextProbs());
+			Execute::Print::TextProbabilities(LegacyModel.getTextProbs());
 
 		if (options.character)
-			Execute::Print::CharProbabilities(ctx.getCharProbs());
+			Execute::Print::CharProbabilities(LegacyModel.getCharProbs());
 	}
 
 }
@@ -260,24 +261,25 @@ static void handleNGramModelPrinting(const ParsedCommand& cmd, const AIContext& 
 	PrintOptions options = getPrintOptions(cmd);
 
 
+	auto& ngram = ctx.getNGram(modelSize);
 
 	if (cmd.target == Target::Transitions)
 	{
 		if (options.text)
-			Execute::Print::NGramTextTransitions(ctx.getNGram(modelSize).getTextTransitions());
+			Execute::Print::NGramTextTransitions(ngram.getTextTransitions());
 
 		if (options.character)
-			Execute::Print::NGramCharTransitions(ctx.getNGram(modelSize).getCharTransitions());
+			Execute::Print::NGramCharTransitions(ngram.getCharTransitions());
 	}
 
 
 	else if (cmd.target == Target::Probs)
 	{
 		if (options.text)
-			Execute::Print::NGramTextProbabilities(ctx.getNGram(modelSize).getTextProbabilities());
+			Execute::Print::NGramTextProbabilities(ngram.getTextProbabilities());
 
 		if (options.character)
-			Execute::Print::NGramCharProbabilities(ctx.getNGram(modelSize).getCharProbabilities());
+			Execute::Print::NGramCharProbabilities(ngram.getCharProbabilities());
 	}
 
 
@@ -288,18 +290,28 @@ static void handleNGramModelPrinting(const ParsedCommand& cmd, const AIContext& 
 static bool handleGenerincPrinting(const ParsedCommand& cmd,
 	const AIContext& ctx)
 {
+
+	auto& legacy = ctx.getLegacyModel();
+
+	auto& ngram = ctx.getNGram(ctx.getConfig().getDefaultNGramSize());
+
+
+
 	if (cmd.target == Target::Transitions)
 	{
 		if (cmd.options.empty())
 		{
-			Execute::Print::TextTransitions(ctx.getTextTransitions());
 
-			Execute::Print::NGramTextTransitions(ctx.getNGram(ctx.getConfig().getDefaultNGramSize()).getTextTransitions());
+			Execute::Print::TextTransitions(legacy.getTextTransitions());
+
+			Execute::Print::NGramTextTransitions(ngram.getTextTransitions());
 
 
-			Execute::Print::CharTransitions(ctx.getCharTransitions());
 
-			Execute::Print::NGramCharTransitions(ctx.getNGram(ctx.getConfig().getDefaultNGramSize()).getCharTransitions());
+			Execute::Print::CharTransitions(legacy.getCharTransitions());
+
+			Execute::Print::NGramCharTransitions(ngram.getCharTransitions());
+
 
 			return true;
 		}
@@ -309,11 +321,17 @@ static bool handleGenerincPrinting(const ParsedCommand& cmd,
 	{
 		if (cmd.options.empty())
 		{
-			//NGRAM PROBS PRINTER NOT DONE
 
-			Execute::Print::TextProbabilities(ctx.getTextProbs());
+			Execute::Print::TextProbabilities(legacy.getTextProbs());
 
-			Execute::Print::CharProbabilities(ctx.getCharProbs());
+			Execute::Print::NGramTextProbabilities(ngram.getTextProbabilities());
+
+
+
+			Execute::Print::CharProbabilities(legacy.getCharProbs());
+
+			Execute::Print::NGramCharProbabilities(ngram.getCharProbabilities());
+
 
 			return true;
 		}

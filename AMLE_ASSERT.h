@@ -6,7 +6,6 @@
 
 
 
-
 #ifdef _DEBUG
 #define AMLE_ASSERT(x) assert(x)
 #else

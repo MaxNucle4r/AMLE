@@ -67,9 +67,9 @@ namespace
 {
 	void clearAllProbabilities(AIContext& ctx)
 	{
-		Execute::Clear::clearMap(ctx.getTextProbs());
+		Execute::Clear::clearMap(ctx.getLegacyModel().getTextProbs());
 
-		Execute::Clear::clearMap(ctx.getCharProbs());
+		Execute::Clear::clearMap(ctx.getLegacyModel().getCharProbs());
 
 		for (auto& [size, model] : ctx.getAllNGrams())
 		{
@@ -84,20 +84,23 @@ namespace
 
 	void clearLegacyProbabilities(AIContext& ctx)
 	{
-		Execute::Clear::clearMap(ctx.getTextProbs());
+		Execute::Clear::clearMap(ctx.getLegacyModel().getTextProbs());
 
-		Execute::Clear::clearMap(ctx.getCharProbs());
+		Execute::Clear::clearMap(ctx.getLegacyModel().getCharProbs());
 	}
 
 
 
 	void clearAllModels(AIContext& ctx)
 	{
-		Execute::Clear::clearMap(ctx.getTextTransitions());
-		Execute::Clear::clearMap(ctx.getTextProbs());
+		auto& legacyModel = ctx.getLegacyModel();
 
-		Execute::Clear::clearMap(ctx.getCharTransitions());
-		Execute::Clear::clearMap(ctx.getCharProbs());
+
+		Execute::Clear::clearMap(legacyModel.getTextTransitions());
+		Execute::Clear::clearMap(legacyModel.getTextProbs());
+
+		Execute::Clear::clearMap(legacyModel.getCharTransitions());
+		Execute::Clear::clearMap(legacyModel.getCharProbs());
 
 
 		ctx.clearAllNGrams();
@@ -106,11 +109,14 @@ namespace
 
 	void clearLegacy(AIContext& ctx)
 	{
-		Execute::Clear::clearMap(ctx.getTextTransitions());
-		Execute::Clear::clearMap(ctx.getTextProbs());
+		auto& legacyModel = ctx.getLegacyModel();
 
-		Execute::Clear::clearMap(ctx.getCharTransitions());
-		Execute::Clear::clearMap(ctx.getCharProbs());
+
+		Execute::Clear::clearMap(legacyModel.getTextTransitions());
+		Execute::Clear::clearMap(legacyModel.getTextProbs());
+
+		Execute::Clear::clearMap(legacyModel.getCharTransitions());
+		Execute::Clear::clearMap(legacyModel.getCharProbs());
 	}
 
 

@@ -27,11 +27,11 @@ AIContext::AIContext()
 AIContext& AIContext::operator=(const AIContext& other)
 {
     //legacy model
-    TextTransitions = other.getTextTransitions();
-    TextProbs = other.getTextProbs();
+    legacy.getTextTransitions() = other.legacy.getTextTransitions();
+    legacy.getTextProbs() = other.legacy.getTextProbs();
 
-    CharTransitions = other.getCharTransitions();
-    CharProbs = other.getCharProbs();
+    legacy.getCharTransitions() = other.legacy.getCharTransitions();
+    legacy.getCharProbs() = other.legacy.getCharProbs();
 
 
 
@@ -98,11 +98,11 @@ namespace
 
 AIContext& AIContext::operator+= (const AIContext& other)
 {
-    mergeTextTransitions(TextTransitions, other.getTextTransitions());
-    mergeCharTransitions(CharTransitions, other.getCharTransitions());
+    mergeTextTransitions(legacy.getTextTransitions(), other.legacy.getTextTransitions());
+    mergeCharTransitions(legacy.getCharTransitions(), other.legacy.getCharTransitions());
 
-    TextProbs = Model::Text::makeProbabilities(TextTransitions);
-    CharProbs = Model::Char::makeProbabilities(CharTransitions);
+    legacy.getTextProbs() = Model::Text::makeProbabilities(legacy.getTextTransitions());
+    legacy.getCharProbs() = Model::Char::makeProbabilities(legacy.getCharTransitions());
 
 
 
@@ -177,24 +177,9 @@ void AIContext::clearDebugger()
 
 
 
-void AIContext::clearLegacyTextTransitions()
+void AIContext::clearLegacy()
 {
-    TextTransitions.clear();
-}
-
-void AIContext::clearLegacyTextProbs()
-{
-    TextProbs.clear();
-}
-
-void AIContext::clearLegacyCharTransitions()
-{
-    AIContext::CharTransitions.clear();
-}
-
-void AIContext::clearLegacyCharProbs()
-{
-    CharProbs.clear();
+    legacy.clear();
 }
 
 
@@ -205,10 +190,10 @@ void AIContext::clearAllNGrams()
 
 void AIContext::clearNGram(size_t size)
 {
-    if (!(size < NgramModel::MAX_CONTEXT_SIZE &&
-        size > NgramModel::MIN_CONTEXT_SIZE))
+    if (!(size <= NgramModel::MAX_CONTEXT_SIZE &&
+        size >= NgramModel::MIN_CONTEXT_SIZE))
     {
-        throw std::invalid_argument("Invalid Option For Size");
+        throw std::invalid_argument("Invalid Size for NGram");
     }
 
     NGrams.at(size).clear();
@@ -219,12 +204,7 @@ void AIContext::clearNGram(size_t size)
 void AIContext::clearModel()
 {
    
-    clearLegacyTextTransitions();
-    clearLegacyTextProbs();
-
-    clearLegacyCharTransitions();
-    clearLegacyCharProbs();
-
+    clearLegacy();
     clearAllNGrams();
 
     clearMemory();
@@ -235,15 +215,6 @@ void AIContext::clearModel()
 
 
 
-bool AIContext::isLegacyEmpty() const
-{
-    return TextTransitions.empty() &&
-        CharTransitions.empty() &&
-        TextProbs.empty() &&
-        CharProbs.empty();
-
-}
-
 bool AIContext::areNgramsEmpty() const
 {
     for (const auto& [size, model] : NGrams)
@@ -253,6 +224,13 @@ bool AIContext::areNgramsEmpty() const
     return true;
 
 }
+
+
+bool AIContext::isLegacyEmpty() const
+{
+    return legacy.isEmpty();
+}
+
 
 bool AIContext::isEmpty() const
 {

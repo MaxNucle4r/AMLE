@@ -1,13 +1,15 @@
 #pragma once
 #include <map>
 
-#include "Types.h"
 #include "Vocabulary.h"
 #include "Memory.h"
 #include "Debug.h"
 #include "Configuration.h"
 #include "TrainingInput.h"
+#include "LegacyModel.h"
 #include "NGram.h"
+
+#include "Components.h"
 
 
 
@@ -18,17 +20,12 @@ class AIContext
 
 private:
 
-
-	// the default legacy model
-	TextTypes::TransitionMap TextTransitions;
-	TextTypes::ProbabilityMap TextProbs;
-
-	CharTypes::TransitionMap CharTransitions;
-	CharTypes::ProbabilityMap CharProbs;
+	const ComponentID component = ComponentID::AI_CONTEXT;
 
 
+	// models
+	LegacyModel legacy;
 
-	// generic NGram models
 	std::map<size_t, NgramModel> NGrams;
 
 
@@ -58,50 +55,21 @@ public:
 
 
 
-	TextTypes::TransitionMap& getTextTransitions() 
+	const ComponentID& getID() const
 	{
-		return TextTransitions;
-	}
-
-	TextTypes::ProbabilityMap& getTextProbs() 
-	{
-		return TextProbs;
-	}
-
-
-	const TextTypes::TransitionMap& getTextTransitions() const
-	{
-		return TextTransitions;
-	}
-	
-	const TextTypes::ProbabilityMap& getTextProbs() const
-	{
-		return TextProbs;
+		return component;
 	}
 
 
 
-
-
-	CharTypes::TransitionMap& getCharTransitions() 
+	LegacyModel& getLegacyModel()
 	{
-		return CharTransitions;
+		return legacy;
 	}
 
-	CharTypes::ProbabilityMap& getCharProbs()
+	const LegacyModel& getLegacyModel() const 
 	{
-		return CharProbs;
-	}
-
-
-	const CharTypes::TransitionMap& getCharTransitions() const
-	{
-		return CharTransitions;
-	}
-
-	const CharTypes::ProbabilityMap& getCharProbs() const
-	{
-		return CharProbs;
+		return legacy;
 	}
 
 
@@ -216,12 +184,7 @@ public:
 	void clearDebugger();
 
 
-	void clearLegacyTextTransitions();
-	void clearLegacyTextProbs();
-
-	void clearLegacyCharTransitions();
-	void clearLegacyCharProbs();
-
+	void clearLegacy();
 
 	void clearAllNGrams();
 	void clearNGram(size_t size);
@@ -229,8 +192,9 @@ public:
 
 	void clearModel();
 
-	bool isLegacyEmpty() const;
+
 	bool areNgramsEmpty() const;
+	bool isLegacyEmpty() const;
 	bool isEmpty() const;
 
 

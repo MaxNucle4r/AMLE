@@ -4,6 +4,8 @@
 
 #include "Types.h"
 
+#include "Components.h"
+
 
 
 
@@ -14,6 +16,9 @@ void NGramContextSizeRecommendation(size_t size);
 class NgramModel
 {
 private:
+
+	const ComponentID component = ComponentID::NGRAM_MODEL;
+
 
 	const size_t contextSize;
 
@@ -27,6 +32,13 @@ private:
 
 
 public:
+
+	const ComponentID& getID() const
+	{
+		return component;
+	}
+
+
 
 	static constexpr size_t MIN_CONTEXT_SIZE = 2;
 	static constexpr size_t MAX_CONTEXT_SIZE = 7;

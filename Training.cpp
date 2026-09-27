@@ -186,14 +186,14 @@ namespace Train
 	{
 
 
-		Model::Text::buildTextTransitions(context.getTextTransitions(), data.tokens);
-		Model::Word::buildCharTransitions(context.getCharTransitions(), data.tokens);
+		Model::Text::buildTextTransitions(context.getLegacyModel().getTextTransitions(), data.tokens);
+		Model::Word::buildCharTransitions(context.getLegacyModel().getCharTransitions(), data.tokens);
 
 
 		// either calculate probabilities here
 		// or at the end of everything
-		context.getTextProbs() = Model::Text::makeProbabilities(context.getTextTransitions());
-		context.getCharProbs() = Model::Char::makeProbabilities(context.getCharTransitions());
+		context.getLegacyModel().getTextProbs() = Model::Text::makeProbabilities(context.getLegacyModel().getTextTransitions());
+		context.getLegacyModel().getCharProbs() = Model::Char::makeProbabilities(context.getLegacyModel().getCharTransitions());
 
 
 	}

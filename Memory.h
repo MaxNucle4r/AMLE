@@ -2,6 +2,8 @@
 #include <string>
 #include <vector>
 
+#include "Components.h"
+
 
 
 
@@ -18,10 +20,24 @@ class AIMemory
 {
 
 private:
+
+    const ComponentID component = ComponentID::MEMORY;
+
+
     std::vector<MemoryEntry> entries;
 
 
+
+
+
 public:
+
+    const ComponentID& getID()
+    {
+        return component;
+    }
+
+
 
     void add(const std::string& input,
         const std::string& output);

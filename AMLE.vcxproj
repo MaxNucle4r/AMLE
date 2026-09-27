@@ -155,6 +155,7 @@
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="FileSystem.cpp" />
     <ClCompile Include="Generation.cpp" />
+    <ClCompile Include="LegacyModel.cpp" />
     <ClCompile Include="Memory.cpp" />
     <ClCompile Include="Model Builder.cpp" />
     <ClCompile Include="Model.cpp" />
@@ -191,10 +192,12 @@
     <ClInclude Include="CommandTraining.h" />
     <ClInclude Include="CommandUtils.h" />
     <ClInclude Include="CommandVersion.h" />
+    <ClInclude Include="Components.h" />
     <ClInclude Include="Configuration.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="FileSystem.h" />
     <ClInclude Include="Generation.h" />
+    <ClInclude Include="LegacyModel.h" />
     <ClInclude Include="ModelType.h" />
     <ClInclude Include="ModelTypeConversion.h" />
     <ClInclude Include="Memory.h" />

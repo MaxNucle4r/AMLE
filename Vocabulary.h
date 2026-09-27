@@ -5,6 +5,8 @@
 
 #include "Text Processing.h"
 
+#include "Components.h"
+
 
 
 
@@ -48,11 +50,22 @@ class VocabularyManager
 {
 
 private:
+
+    const ComponentID component = ComponentID::VOCABULARY;
+
+
     std::unordered_map<std::string, WordStats> vocab;
 
 
 
 public:
+
+    const ComponentID getID() const
+    {
+        return component;
+    }
+
+
 
     const std::unordered_map<std::string, WordStats>& getAll() const;
     std::unordered_map<std::string, WordStats>& getAll();

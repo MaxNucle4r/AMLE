@@ -178,10 +178,23 @@ namespace Execute::Generate
 		std::string reply;
 
 		if (model == ModelType::Legacy)
-			reply = Generation::Text(ctx.getTextProbs(), temperature, endtype, gentype, seed, ctx.getDebugger());
+			reply = 
+			Generation::Text(ctx.getLegacyModel().getTextProbs(), 
+				temperature, 
+				endtype, gentype, 
+				seed, 
+				ctx.getDebugger());
+
+
 
 		else if (model == ModelType::NGram)
-			reply = Generation::Text(ctx.getNGram(modelSize).getTextProbabilities(), temperature, endtype, gentype, seed, ctx.getDebugger(), modelSize);
+			reply = 
+			Generation::Text(ctx.getNGram(modelSize).getTextProbabilities(), 
+				temperature, 
+				endtype, gentype, 
+				seed, 
+				ctx.getDebugger(),
+				modelSize);
 
 
 
@@ -223,7 +236,7 @@ namespace Execute::Generate
 		GenerationType gentype = GenerationType::NONE;
 		EndingType endtype = EndingType::NONE;
 
-		std::string reply = Generation::Word(ctx.getCharProbs(), temperature, endtype, gentype, ctx.getDebugger());
+		std::string reply = Generation::Word(ctx.getLegacyModel().getCharProbs(), temperature, endtype, gentype, ctx.getDebugger());
 
 
 		if (ctx.getDebugger().enabled(DebugFlags::Generation))
