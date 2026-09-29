@@ -3,7 +3,7 @@
 #include <algorithm>
 
 #include "AIContext.h"
-#include "Commands.h"
+#include "CommandParser.h"
 #include "AMLE Loop.h"
 
 

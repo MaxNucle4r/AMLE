@@ -6,7 +6,7 @@
 #include "Types.h"
 #include "ModelType.h"
 #include "Debug.h"
-#include "Commands.h"
+#include "CommandParser.h"
 #include "Vocabulary.h"
 #include "Generation.h"
 

@@ -2,7 +2,7 @@
 #include <iostream>
 
 #include "AMLE Loop.h"
-#include "Commands.h"
+#include "CommandParser.h"
 #include "Command Executor.h"
 #include "Persistence.h"
 #include "FileSystem.h"

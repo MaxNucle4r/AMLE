@@ -6,7 +6,7 @@
 #include "Memory.h"
 #include "Vocabulary.h"
 #include "Debug.h"
-#include "Commands.h"
+#include "CommandParser.h"
 #include "TrainingInput.h"
 
 
