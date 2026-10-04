@@ -62,7 +62,7 @@ namespace Execute::Debugger
 
 
 			default:
-				throw std::invalid_argument("Invalid target for @config>\n");
+				throw std::invalid_argument("Invalid target for @debug>\n");
 		}
 
 

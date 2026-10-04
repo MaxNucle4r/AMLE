@@ -147,9 +147,11 @@
     <ClCompile Include="CommandConfig.cpp" />
     <ClCompile Include="CommandDebug.cpp" />
     <ClCompile Include="CommandGeneration.cpp" />
+    <ClCompile Include="CommandHelp.cpp" />
     <ClCompile Include="CommandPersistence.cpp" />
     <ClCompile Include="CommandPrint.cpp" />
     <ClCompile Include="CommandParser.cpp" />
+    <ClCompile Include="Commands.cpp" />
     <ClCompile Include="CommandTraining.cpp" />
     <ClCompile Include="Configuration.cpp" />
     <ClCompile Include="Debug.cpp" />
@@ -186,6 +188,7 @@
     <ClInclude Include="CommandConfig.h" />
     <ClInclude Include="CommandDebug.h" />
     <ClInclude Include="CommandGeneration.h" />
+    <ClInclude Include="CommandHelp.h" />
     <ClInclude Include="CommandPersistence.h" />
     <ClInclude Include="CommandPrint.h" />
     <ClInclude Include="CommandParser.h" />

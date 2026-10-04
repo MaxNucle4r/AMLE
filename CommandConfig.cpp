@@ -30,7 +30,10 @@ static void applyGenerationConfig(AIContext& ctx, const ParsedCommand& cmd)
 
 	if (cmd.options.contains("d-max-length"))
 	{
+		
 		//DOES ABSOLUTELY NOTHING YET
+		// TO DO 
+		// make this. + make it a size_t rather than int
 		int newMaxWords =
 			OptionParser::getIntOption(
 				cmd, "d-max-length",
@@ -134,6 +137,9 @@ static void applyRuntimeConfig(AIContext& ctx, const ParsedCommand& cmd)
 
 	if (cmd.options.contains("auto-save-minutes"))
 	{
+		// TO DO
+		// turn this into a size_t 
+
 		int saveMinutes =
 			OptionParser::getIntOption(
 				cmd, "auto-save-minutes",

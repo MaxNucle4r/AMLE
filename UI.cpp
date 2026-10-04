@@ -538,46 +538,6 @@ namespace UI::Warning
 
 
 
-namespace UI::Command
-{
-	void showAllCommands()
-	{
-		//TO DO
-		// finish this... sometimes...
-		// W.I.P
-		std::cout << "Command format: @[command]>[target]{[option1]/[option2]/...}";
-		std::cout << "Example: @generate>text{temp=1.5f/seed=the night}";
-
-		// MAKE LATER A PROPPER COMMAND DATA MANAGER
-		/*
-		struct OptionInfo
-		{
-			std::string name;
-			std::string description;
-		};
-
-		struct CommandInfo
-		{
-			std::string name;
-			std::vector<std::string> targets;
-			std::vector<OptionInfo> options;
-		};
-		*/
-
-		UI::spacer();
-
-
-
-	}
-
-
-
-}
-
-
-
-
-
 namespace UI::Vocab
 {
 	void Vocabulary(const VocabularyManager& vm)

@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include <windows.h>
 
 #include "AMLE Loop.h"
 #include "CommandParser.h"
@@ -11,15 +12,33 @@
 
 
 
-//anonymus namespace
-//only this .cpp can call the funcitons
-//interesting...
 namespace
 {
+    void startUp()
+    {
+
+        // UTF-8 console support for UI/output.
+        // AMLE text processing is currently ASCII-oriented.
+        SetConsoleOutputCP(CP_UTF8);
+        SetConsoleCP(CP_UTF8);
+
+
+		std::cout<<R"(  
+         █████╗  ███╗   ███╗ ██╗     ███████╗
+        ██╔══██╗ ████╗ ████║ ██║     ██╔════╝
+        ███████║ ██╔████╔██║ ██║     █████╗
+        ██╔══██║ ██║╚██╔╝██║ ██║     ██╔══╝
+        ██║  ██║ ██║ ╚═╝ ██║ ███████╗███████╗
+        ╚═╝  ╚═╝ ╚═╝     ╚═╝ ╚══════╝╚══════╝
+        )";
+
+        UI::spacer();
+      
+        UI::Common::Header::printBigHeader("Welcome to AMLE - Adaptive Markov Language Engine");
+        UI::Common::Header::printSmallHeader("Type '@help' for a list of available commands");
+    }
 
 }
-
-
 namespace AMLE
 {
     void Run(AIContext& Amle, CommandParser& Parser)
@@ -27,6 +46,8 @@ namespace AMLE
         //palceholder for AutoSave when u decide to make it better
         Command lastCommand = Command::None;
         Target lastTarget = Target::None;
+
+        startUp();
 
         while (true)
         {

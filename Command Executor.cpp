@@ -18,6 +18,7 @@
 #include "CommandPrint.h"
 #include "CommandVersion.h"
 #include "CommandClear.h"
+#include "CommandHelp.h"
 
 
 
@@ -37,9 +38,7 @@ namespace Execute
 		{
 			case Command::Help:
 			{
-				//TO DO
-				//UI::CommandUI::showAllCommands();
-				std::cout << "W.I.P\n";
+				Execute::Help::showAllCommands();
 
 				break;
 			}

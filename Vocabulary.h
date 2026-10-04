@@ -60,7 +60,7 @@ private:
 
 public:
 
-    const ComponentID getID() const
+    ComponentID getID() const
     {
         return component;
     }
@@ -95,6 +95,8 @@ public:
 
 
     VocabularyManager& operator+= (const VocabularyManager& other);
+
+    VocabularyManager& operator= (const VocabularyManager& other);
 };
 
 

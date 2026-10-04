@@ -119,13 +119,6 @@ namespace UI
 
 
 
-	namespace Command
-	{
-		void showAllCommands();
-	}
-
-
-
 	namespace Vocab
 	{
 		void Vocabulary(const VocabularyManager& vm);

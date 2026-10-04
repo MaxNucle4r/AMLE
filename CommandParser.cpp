@@ -15,8 +15,6 @@
 
 
 
-//maybe make it reusable later?
-//in case u add more commands like @[command]{ [options] }
 void CommandParser::checkDebugCommand(std::string_view input, ParsedCommand& CMD)
 {
 	auto optionStart = input.find('{');
@@ -35,9 +33,7 @@ void CommandParser::checkDebugCommand(std::string_view input, ParsedCommand& CMD
 
 
 
-	//leaving just CMD.command = parseCommand(commandText); could overwrite it
-	// with Command::NONE
-	// this is just for safety
+	// Only handle the shorthand @debug{...} syntax
 	Command cmd = parseCommand(commandText);
 
 
@@ -180,9 +176,9 @@ ParsedCommand CommandParser::parse(std::string_view input)
 		if (CMD.command != Command::None)
 			return CMD;
 
-		//this also modifies .target
-		//do not forget that
-		//coz later u check for .target == Target::DebugFlags
+
+		// @debug{...} is shorthand for @debug>flags{...}.
+		// checkDebugCommand() sets both CMD.command and CMD.target.
 		checkDebugCommand(s, CMD);
 		if (CMD.command == Command::Debug)
 			return CMD;

@@ -180,8 +180,14 @@ namespace
 
 
         }
+
     }
+
 }
+
+
+
+
 
 VocabularyManager& VocabularyManager::operator+= (const VocabularyManager& other)
 {
@@ -190,6 +196,19 @@ VocabularyManager& VocabularyManager::operator+= (const VocabularyManager& other
 
     return *this;
 
+}
+
+
+VocabularyManager& VocabularyManager::operator= (const VocabularyManager& other)
+{
+    //for any [vocab] = [vocab] cases
+	if (this != &other)
+	{
+		vocab.clear();
+		mergeVocabularies(*this, other);
+	}
+
+	return *this;
 }
 
 
