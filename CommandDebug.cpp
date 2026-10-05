@@ -15,9 +15,19 @@ static void debugModifier(AIContext& ctx, const ParsedCommand& cmd)
 		bool all = OptionParser::getBoolOption(cmd.options.at("all"));
 
 		if (all)
+		{
 			ctx.getDebugger().enableAll();
+
+			UI::Common::printText("All debug flags enabled.");
+		}
+			
 		else
+		{
 			ctx.getDebugger().disableAll();
+
+			UI::Common::printText("All debug flags disabled.");
+		}
+
 	}
 
 
@@ -34,10 +44,21 @@ static void debugModifier(AIContext& ctx, const ParsedCommand& cmd)
 
 
 		if (enabled)
+		{
 			ctx.getDebugger().enable(it->second);
 
+			UI::Common::printText("Debug flag '" + std::string(name) + "' enabled.");
+		}
+			
+
 		else
+		{
 			ctx.getDebugger().disable(it->second);
+
+			UI::Common::printText("Debug flag '" + std::string(name) + "' disabled.");
+
+		}
+			
 	}
 
 

@@ -34,7 +34,6 @@ namespace Hashes
 
 
 
-    //FOR LATER WHEN U DECIDE TO GO WITH 4-GRAMS OR N-GRAMS
     // 0x9e3779b9 in HEX ----- 2654435769 in decimals
     // which is 2^32 / phi
     // (phi = golden ration)

@@ -92,10 +92,7 @@ namespace Train
 namespace Train
 {
 
-	//either make this a std::vector<std::string> takeInputs
-	// or make void trainLoop() where u call takeInput/ takeInputs then call whatever training function is needed
-	//or keep the current std::stringTakeInput
-	//congrats u officially changed this funciton 6 times
+
 	std::vector<std::string> takeInputs()
 	{
 
@@ -109,8 +106,6 @@ namespace Train
 			std::getline(std::cin, input);
 
 
-			//instead of using input[0]=='@'
-			//maybe .starts_with() works?
 			if (input == "stop" || input.starts_with('@') || input.empty())
 				return inputs;
 
@@ -161,11 +156,14 @@ namespace Train
 			if (modelString == "ngram")
 				return TrainModel::NGram;
 
+
 			else if (modelString == "legacy")
 				return TrainModel::Legacy;
 
+
 			else if (modelString == "both")
 				return TrainModel::Both;
+
 
 			else
 				return TrainModel::NONE;
@@ -236,10 +234,16 @@ namespace Train
 
 				UI::Common::printText("Current Size: " + std::to_string(size));	
 
-				std::cout
-					<< "Model address: "
-					<< &model
-					<< '\n';
+				if (context.getDebugger().enabled(DebugFlags::Memory))
+				{
+					std::cout
+						<< "Model address: "
+						<< &model
+						<< "\n\n";
+
+				}
+
+
 			}
 
 			
@@ -282,6 +286,7 @@ namespace Train
 
 
 		}
+		
 
 
 		if (context.getDebugger().enabled(DebugFlags::Training))

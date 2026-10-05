@@ -11,16 +11,16 @@
 //TO DO
 /*
 
+MUST DOs:
+	UPDATE OPTION PARSER TO USE THE COMMANDREGISTRY MAP
+		- this will make it easier to add new commands and options
+		- also will make it easier to validate options and targets
+
 
 
 POLISH:
 
 	Make the UI more user friendly
-	Add the @help commandand to show all commands and their syntax
-	Make the seed be an actual printed part of the generation
-	Make some of the commands that enable certain things to display a message that they have been enabled
-	Fix seed sampling that is not being displayed as a generation output
-	
 	
 	+ A LOT MORE
 		
@@ -51,10 +51,26 @@ OPTIMIZATION:
 						2(user accesible): unknown yet.
 
 
+
 				P-2. memory
 					std::vector<TrainingInput> trainingInputs; does not need to be stored
 						Reduce runtime memory usage by limiting or disabling
 						retention of session-only TrainingInput entries.
+
+					@config>optimize{profile=memory/absolute=true}
+						absolute:
+							When enabled:
+								- Aggressively minimize RAM usage during training.
+								- TrainingInputs are capped/limited.
+								- AIMemory is not populated during training.
+								- NGram training data may periodically be serialized to disk.
+								- Clear in-memory maps after spilling.
+								- Restore/load disk-backed data when required for generation.
+								- Consider disabling higher NGram sizes (6/7) under absolute mode.
+								- Do NOT destroy NgramModel objects; only release their stored data.
+								- Decide how disk chunks should be merged/indexed later.
+
+
 
 					@config>optimize{profile=memory/training-inputs-size=[<20]} if they really want to have that.
 					

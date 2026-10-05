@@ -9,9 +9,9 @@
 // by default only create 7
 // for now at least...
 // use map so they are ordered nicely
-// so that NGrams[3] gives the 3Gram
 // DECIDE LATER WHETHER U WANT SIZE 1 OR NOT.
 // as of 01.08.26 --- 12.45 U REMOVED IT
+// so now there are only 6
 AIContext::AIContext()
 {
     for (size_t size = NgramModel::MIN_CONTEXT_SIZE; size <= NgramModel::MAX_CONTEXT_SIZE; ++size)

@@ -151,9 +151,7 @@ ParsedCommand CommandParser::parse(std::string_view input)
 	ParsedCommand CMD;
 
 
-	// REMEMBER, a command will look like this
 	// @command>target{option/option...}
-	//coz u gonna forget that 100%
 
 
 	if (input.empty()) 

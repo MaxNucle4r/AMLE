@@ -31,7 +31,6 @@ std::string_view commandToString(Command command);
 
 static const std::unordered_map<std::string_view, Command> commands =
 {
-    //dont forget u havnt wrote anything for @help
     {"help", Command::Help},
 
     {"generate", Command::Generate},

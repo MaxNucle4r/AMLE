@@ -19,16 +19,6 @@ static TrainModelStats createTrainingPlan(const ParsedCommand& cmd)
 	TrainModelStats stats;
 
 
-
-	// the options... think about how u want them to work...
-	// decide on what the command for training should look like?
-	// IDK... -_-
-	// @train>input{model = ngram } should train all ngrams?
-	// @train>input{model = ngram/ size = 4} should train ngrams <=4
-	// @train>input{} / @train>input should train everything
-	//  maybe also allow somehting like @train>input{model-size = 4} so it train legacy and ngrams <=4 ?
-	//  bruh.
-	// allow both @train>input{model = both} and @train>input{} to be also training both 
 	if (cmd.options.contains("model"))
 	{
 		std::string modelString =
@@ -66,8 +56,6 @@ static TrainModelStats createTrainingPlan(const ParsedCommand& cmd)
 		UI::Common::printText("Only NGram models will be trained\n");
 
 
-		//maybe another name rather than  "model - size" ?
-		// maybe just "models = [number]"
 		if (cmd.options.contains("ngram-size"))
 		{
 			stats.trainableNgramModels =
@@ -165,6 +153,12 @@ namespace Execute::Training
 		for (const std::string& input : modelStats.trainingInputs)
 		{
 			auto data = Train::Preparation::prepareTrainingData(input);
+
+
+			for (const WordData& wd : data.analized)
+			{
+				ctx.getVocabulary().addInputWord(wd);
+			}
 
 
 

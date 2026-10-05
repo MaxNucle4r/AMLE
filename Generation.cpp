@@ -69,7 +69,7 @@ namespace
 {
 	void appendString(std::string& string, const std::string& toAdd)
 	{
-		// hopefullt this would turn "hello" + "!!!" + "how are u"
+		// hopefully this would turn "hello" + "!!!" + "how are u"
 		// into "hello!!! how are u"
 
 		if (std::all_of(toAdd.begin(), toAdd.end(),

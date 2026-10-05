@@ -77,11 +77,11 @@ static void applyGenerationConfig(AIContext& ctx, const ParsedCommand& cmd)
 
 
 // SYNTAX
-//[[nodiscard]]     // Warn if the return value is ignored.
-//[[maybe_unused]]  // Suppress "unused" warnings.
-//[[deprecated]]    // Warn when something is used.
-//[[fallthrough]]   // Marks an intentional fallthrough in a switch.
-//[[noreturn]]      // Function never returns (throws/exits forever).
+//[[nodiscard]]     Warn if the return value is ignored.
+//[[maybe_unused]]  Suppress "unused" warnings.
+//[[deprecated]]    Warn when something is used.
+//[[fallthrough]]   Marks an intentional fallthrough in a switch.
+//[[noreturn]]      Function never returns (throws/exits forever).
 
 
 // TO DO
