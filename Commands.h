@@ -165,6 +165,9 @@ enum class Option
 	Filename,
 };
 
+Option stringToOption(std::string_view optionName);
+
+
 
 namespace
 {

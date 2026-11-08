@@ -52,3 +52,23 @@ std::string_view targetToString(Target target)
 
     return "unknown";
 }
+
+
+
+Option stringToOption(std::string_view optionName)
+{
+    for (const auto& [command, targets] : commandRegistry)
+    {
+        for (const auto& [target, options] : targets)
+        {
+            for (const auto& [option, definition] : options)
+            {
+                if (definition.name == optionName)
+                    return option;
+            }
+        }
+    }
+
+    return Option::NONE;
+}
+

@@ -124,14 +124,16 @@ void CommandParser::parseOptions(std::string_view optionsText,
 			throw std::invalid_argument("Invalid option format");
 
 
-		std::string_view option = token.substr(0, eq);
+		std::string_view optionName = token.substr(0, eq);
 		std::string_view value = token.substr(eq + 1);
 
+
+		Option option = stringToOption(optionName);
 
 
 		//careful what u use
 		//this can overwrite things
-		parsed.options[std::string(option)] = std::string(value);
+		parsed.options[option] = std::string(value);
 		
 		//this does not
 		//parsed.options.emplace(option, value);

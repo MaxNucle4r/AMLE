@@ -15,7 +15,7 @@ struct ParsedCommand
     Command command = Command::None;
     Target target = Target::None;
 
-    std::unordered_map<std::string, std::string> options;
+    std::unordered_map<Option, std::string> options;
 
 };
 
